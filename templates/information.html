@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Student Information</title>
+{% endblock %}
+
+{% block content %}
+<div style="background:#c7d9e5; color:black; padding:8px; margin:15px 0; font-weight:bold;">
+    Info: All students records table
+</div>
+
+<div class="container-fluid" style="margin-top:20px;">
+
+    <!-- SEARCH SECTION -->
+    <div class="row" style="margin-bottom:15px;">
+
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Search Record By Name Only" id="search_name">
+        </div>
+
+        <div class="col-md-3">
+            <select class="form-control" id="search_admission">
+                <option value="">Select Admission Status</option>
+                <option value="Admitted">Admitted</option>
+                <option value="Undecided">Undecided</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <select class="form-control" id="search_gender">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <input type="number" class="form-control" placeholder="Enter Jamb Score" id="search_jamb">
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary btn-block" id="search_btn">
+                Search
+            </button>
+        </div>
+
+    </div>
+
+    <!-- TABLE SECTION -->
+    <div class="table-responsive text-center">
+        <table class="table table-bordered table-striped table-hover" id="students_table">
+            <thead>
+                <tr class="info">
+                    <th class="text-center">S/N</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Gender</th>
+                    <th class="text-center">Jamb Score</th>
+                    <th class="text-center">Admission Status</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in information %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ student.last_name }} {{ student.middle_name }} {{ student.first_name }}</td>
+                    <td>{{ student.gender }}</td>
+                    <td>{{ student.jamb_score }}</td>
+                    <td>{{ student.admission_status }}{% if student.admission_status == 'Admitted' %}<span class="label label-success">Admitted</span>{% endif %}</td>
+                    <td>
+                        <button class="btn btn-primary btn-xs" onclick="window.location.href='{{ url_for('profile', id=student.id) }}'">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div id="no_records_msg" class="alert alert-danger" style="display:none;">No records found</div>
+    </div>
+
+</div>
+{% endblock %}

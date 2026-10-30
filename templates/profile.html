@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+
+
+
+
+
+
+{% block title %}
+<title>Student Information</title>
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container wrapper">
+
+    <div class="row">
+
+        <!-- LEFT COLUMN -->
+        <div class="col-md-3">
+            <div class="profile-card">
+                <img src="{{ url_for('static', filename='uploads/' ~ student.image) }}" alt="Student picture" >
+                <h4>{{ student.last_name }}
+                        {{ student.middle_name }}
+                        {{ student.first_name }}</h4>
+                <span class="profile-status">undecided</span>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="col-md-9">
+
+            <!-- Personal Info -->
+            <div class="section-bar">Personal Information</div>
+            <div class="content-box">
+                <div class="info-line">
+                    <span class="label-bold">Email:</span>
+                    {{ student.email}}
+                </div>
+
+                <div class="info-line">
+                    <span class="label-bold">Gender:</span>
+                    {{ student.gender }}
+                </div>
+
+                <div class="info-line">
+                    <span class="label-bold">Phone Number:</span>
+                    {{ student.phone }}
+                </div>
+
+                <div class="info-line">
+                    <span class="label-bold">Date Of Birth:</span>
+                    {{ student.dob }}
+                </div>
+
+                <div class="info-line">
+                    <span class="label-bold">Address:</span>
+                    {{ student.address }}
+                </div>
+
+            </div>
+
+            <!-- Other Info -->
+            <div class="section-bar">Other Information</div>
+            <div class="content-box">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <span class="label-bold">State Of Origin:</span>
+                        {{ student.state }}
+                    </div>
+
+                    <div class="col-sm-6">
+                        <span class="label-bold">Local Govt:</span>
+                        {{ student.lga }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Info -->
+            <div class="section-bar">Academics Related Information</div>
+            <div class="content-box">
+
+                <div class="row academic-row">
+                    <div class="col-sm-4">
+                        <span class="label-bold">Next Of Kin:</span>
+                        {{ student.next_of_kin }}
+                    </div>
+
+                    <div class="col-sm-4">
+                        <span class="label-bold">Jamb Score:</span>
+                        {{ student.jamb_score }}
+                    </div>
+
+
+                    <div class="col-sm-4">
+                        <span class="label-bold">Status:</span>
+                        undecided
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-8">
+                        <span class="label-bold">Change Status:</span>
+                        <select class="form-control change-status">
+                            <option>Change-Status</option>
+                            <option>Approved</option>
+                            <option>Rejected</option>
+                            <option>Pending</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

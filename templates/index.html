@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Student portal</title>
+{% endblock %}
+
+{% block home_active %}
+class='active'
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="container hero-section">
+    <div class="row">
+
+        <!-- Left Text -->
+        <div class="col-md-6" style="margin-top:40px;">
+            <h1 class="hero-title">Student Main Portal</h1>
+
+            <p class="hero-subtext">
+                Ustacky Student Portal registration, join us today
+                for your online courses
+            </p>
+
+            <a href="/form" class="btn btn-custom" style="color: orange;">
+               Get started
+            </a>
+        </div>
+
+        <!-- Right Image -->
+        <div class="col-md-6 text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+                 class="hero-img">
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
